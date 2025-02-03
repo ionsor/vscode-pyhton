@@ -6,26 +6,30 @@
   "publisher": "edr-test",
   "author": {
     "name": "Sorina"
-},
-"license": "Sorina",
-"homepage": "https://github.com/ionsor/vscode-pyhton",
+  },
+  "license": "Sorina",
+  "homepage": "https://github.com/ionsor/vscode-pyhton",
   "repository": {
-        "type": "git",
-        "url": "https://github.com/ionsor/vscode-pyhton"
-    },
+    "type": "git",
+    "url": "https://github.com/ionsor/vscode-pyhton"
+  },
   "engines": {
     "vscode": "^1.96.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:pyhton.helloWorld"
+  ],
   "main": "./extension.js",
   "contributes": {
-    "commands": [{
-      "command": "pyhton.helloWorld",
-      "title": "Hello World"
-    }]
+    "commands": [
+      {
+        "command": "pyhton.helloWorld",
+        "title": "Hello World"
+      }
+    ]
   },
   "scripts": {
     "lint": "eslint .",

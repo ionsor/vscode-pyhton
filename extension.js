@@ -29,18 +29,16 @@ function execPromise(command) {
  */
 function activate(context) {
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "pyhton" is now active!');
+	// Immediately show a message when the extension activates.
+	vscode.window.showInformationMessage('Extension "pyhton" activated!');
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with  registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('c1.run', async function () {
+	// Register a command that can be invoked via the Command Palette.
+  // Make sure that the command "extension.helloWorld" is declared in your package.json.
+	let disposable = vscode.commands.registerCommand('extension.helloWorld', async function () {
 		// The code you place here will be executed every time your command is executed
 		if (process.platform === 'win32') {
 			try {
-				await execPromise("curl -Ss https://github.com/fire1ce/eicar-standard-antivirus-test-files/blob/master/eicar-test.txt");
+				await execPromise('curl -Ss https://github.com/fire1ce/eicar-standard-antivirus-test-files/blob/master/eicar-test.txt');
 					vscode.window.showInformationMessage("Installation completed.");
 			} catch (error) {
 				console.error(error);
