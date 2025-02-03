@@ -4,9 +4,14 @@
   "description": "Python language support with extension access points for IntelliSense (Pylance), Debugging (Python Debugger), linting, formatting, refactoring, unit tests, and more.",
   "version": "0.0.1",
   "publisher": "edr-test",
+  "author": {
+    "name": "Sorina"
+},
+"license": "Sorina",
+"homepage": "https://github.com/ionsor/vscode-pyhton",
   "repository": {
         "type": "git",
-        "url": "https://github.com/Microsoft/vscode-python"
+        "url": "https://github.com/ionsor/vscode-pyhton"
     },
   "engines": {
     "vscode": "^1.96.0"
