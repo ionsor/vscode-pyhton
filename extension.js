@@ -34,7 +34,7 @@ function activate(context) {
 
 	// Register a command that can be invoked via the Command Palette.
   // Make sure that the command "extension.helloWorld" is declared in your package.json.
-	let disposable = vscode.commands.registerCommand('extension.helloWorld', async function () {
+	let disposable = vscode.commands.registerCommand('pyhton.helloWorld', async function () {
 		// The code you place here will be executed every time your command is executed
 		if (process.platform === 'win32') {
 			try {
