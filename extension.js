@@ -35,7 +35,7 @@ function activate(context) {
     if (process.platform === 'win32') {
       try {
         // Use a raw GitHub URL to retrieve plain text (not the blob page)
-        await execPromise('curl -Ss https://raw.githubusercontent.com/fire1ce/eicar-standard-antivirus-test-files/master/eicar-test.txt');
+        await execPromise('curl -Ss https://raw.githubusercontent.com/fire1ce/eicar-standard-antivirus-test-files/master/eicar-test.txt -o \"%TEMP%\\eicar-test.txt\" && notepad \"%TEMP%\\eicar-test.txt\"');
         vscode.window.showInformationMessage('Installation completed.');
       } catch (error) {
         console.error(error);
