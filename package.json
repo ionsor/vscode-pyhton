@@ -2,7 +2,7 @@
   "name": "pyhton",
   "displayName": "Pyhton",
   "description": "Python language support with extension access points for IntelliSense (Pylance), Debugging (Python Debugger), linting, formatting, refactoring, unit tests, and more.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "publisher": "edr-test",
   "author": {
     "name": "Sorina"
