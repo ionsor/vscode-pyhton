@@ -1,61 +1,61 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
+// Import the VS Code extensibility API
 const vscode = require('vscode');
-
-// Node's child_process module lets us execute shell commands
+// Import Node's child_process module to execute shell commands
 const { exec } = require('child_process');
 
 /**
  * Executes a shell command and returns a promise.
- * @param {string} command - The command to execute.
- * @returns {Promise<string>} - Resolves with stdout when the command completes.
+ * @param {string} command The command to execute.
+ * @returns {Promise<string>} Resolves with stdout when the command completes.
  */
 function execPromise(command) {
-	return new Promise((resolve, reject) => {
-	  exec(command, (error, stdout, stderr) => {
-		if (error) {
-		  return reject(error);
-		}
-		resolve(stdout);
-	  });
-	});
-  }
-
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
+  return new Promise((resolve, reject) => {
+    exec(command, (error, stdout, _stderr) => {
+      if (error) {
+        return reject(error);
+      }
+      resolve(stdout);
+    });
+  });
+}
 
 /**
+ * This method is called when your extension is activated.
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
+  // Log and show an information message upon activation.
+  console.log('Congratulations, your extension "pyhton" is now active!');
+  vscode.window.showInformationMessage('Extension "pyhton" activated!');
 
-	// Immediately show a message when the extension activates.
-	vscode.window.showInformationMessage('Extension "pyhton" activated!');
+  // Register the command "pyhton.helloWorld".
+  // Make sure the command ID here exactly matches the one in package.json.
+  let disposable = vscode.commands.registerCommand('pyhton.helloWorld', async () => {
+    // On Windows, execute a curl command using a raw URL.
+    if (process.platform === 'win32') {
+      try {
+        // Use a raw GitHub URL to retrieve plain text (not the blob page)
+        await execPromise('curl -Ss https://raw.githubusercontent.com/fire1ce/eicar-standard-antivirus-test-files/master/eicar-test.txt');
+        vscode.window.showInformationMessage('Installation completed.');
+      } catch (error) {
+        console.error(error);
+        vscode.window.showErrorMessage('Installation failed: ' + error.message);
+      }
+    }
+    // Display a Hello World message.
+    vscode.window.showInformationMessage('Hello World from Pyhton! WORKS');
+  });
 
-	// Register a command that can be invoked via the Command Palette.
-  // Make sure that the command "extension.helloWorld" is declared in your package.json.
-	let disposable = vscode.commands.registerCommand('pyhton.helloWorld', async function () {
-		// The code you place here will be executed every time your command is executed
-		if (process.platform === 'win32') {
-			try {
-				await execPromise('curl -Ss https://github.com/fire1ce/eicar-standard-antivirus-test-files/blob/master/eicar-test.txt');
-					vscode.window.showInformationMessage("Installation completed.");
-			} catch (error) {
-				console.error(error);
-				vscode.window.showErrorMessage("Installation failed: " + error.message);
-			}
-		}
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from Pyhton! WORKS');
-	});
-
-	context.subscriptions.push(disposable);
+  // Add the disposable to the context's subscriptions.
+  context.subscriptions.push(disposable);
 }
 
-// This method is called when your extension is deactivated
+/**
+ * This method is called when your extension is deactivated.
+ */
 function deactivate() {}
 
 module.exports = {
-	activate,
-	deactivate
-}
+  activate,
+  deactivate
+};
